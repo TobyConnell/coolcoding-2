@@ -1,0 +1,31 @@
+// Get an HTML element by calling the getElementById method of the document object.
+// The id of the select HTML element must match this id exactly!
+let playerChoice = document.getElementById("weaponOfChoice");
+let selectWeaponButton = document.getElementById("selectWeapon");
+let newGameButton = document.getElementById("newGame");
+let playerScoreDisplay = document.getElementById("playerScore");
+let computerScoreDisplay = document.getElementById("computerScore");
+let battleResultsDisplay = document.getElementById("battleResults");
+let gameResultDisplay = document.getElementById("gameResult");
+
+// add an event listener to the selectWeapon button and specify
+// a callback function so we can do things when the button is clicked
+selectWeaponButton.addEventListener("click", () => {
+  // generate a random number that will represent the computer's choice
+  // since this will give us a random number between 0 and 2,
+  // we will need to translate this into rock, paper and scissors
+  let computerRandom = Math.floor(Math.random() * 3);
+  let choices = ["Rock", "Paper", "Scissors"];
+  let computerWeapon = choices[computerRandom];
+  battleResultsDisplay.innerText = computerWeapon;
+});
+
+// define some basic variables that will help us keep track
+// of the current game state
+let isGameOver = false;
+let playerScore = 0;
+let computerScore = 0;
+
+// We will use the following format to inform the user of what
+// happened this round:
+// Computer chose rock, you chose scissors. Rock beats scissors. Computer wins.
